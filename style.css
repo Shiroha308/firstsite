@@ -53,6 +53,7 @@ button {
 /*メニューを縦表示にする*/
 .menu {
   width: 70%;
+  top:0;
   position: fixed;
   /*jqueryで操作する部分でコンテンツを隠す*/
   right: -70%;
