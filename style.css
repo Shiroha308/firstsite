@@ -24,6 +24,10 @@ body {
   background-color: #393939;
     /* google fontsのフォントを採用 */
   font-family: 'M PLUS Rounded 1c', sans-serif;
+   /* google fontsのフォントを採用 */
+  画面上部に隙間が空いているので消す
+  margin-top:0;
+  
 }
 
 ::before,
