@@ -1,0 +1,318 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* 画像ファイルの指定 */
+  background-image: url("background.png");
+   
+  /* 画像を常に天地左右の中央に配置 */
+  background-position: center center;
+   
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+   
+  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+  background-attachment: fixed;
+   
+  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+  background-size: cover;
+   
+  /* 背景画像が読み込まれる前に表示される背景のカラー */
+  background-color: #393939;
+    /* google fontsのフォントを採用 */
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  vertical-align: middle;
+  text-align: inherit;
+  font: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/*メニューを縦表示にする*/
+.menu {
+  width: 70%;
+  position: fixed;
+  /*jqueryで操作する部分でコンテンツを隠す*/
+  right: -70%;
+  height: 100vh;
+  margin-left: auto;
+  /* メニューを縦に */
+  display: flex;
+  flex-direction: column;
+  color: #efefef;
+  background-color: #00B0B0;
+  transition: .3s;
+  z-index: 10;
+}
+
+/*メニュ-アイテムを真ん中に配置*/
+.menu-list {
+  width: 100%;
+  height: 100%;
+  /* メニューテキスト位置をリスト内中心に */
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 20px;
+  z-index: 10;
+}
+
+/*ボタンの装飾をする*/
+.btn1 {
+  /* ボタンの配置位置  */
+  position: fixed;
+  /*位置を固定  */
+  top: 16px;
+  right: 16px;
+  /* ボタンの大きさ  */
+  width: 48px;
+  height: 48px;
+  /* 最前面に */
+  z-index: 10;
+  background-color: ;
+}
+
+/*バーガーの線配置、blockがないと大きさ指定できない  */
+.btn-line {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background-color: #00B0B0;
+  transition: .5s;
+}
+
+.btn-line::before,
+.btn-line::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #00B0B0;
+  transition: .5s;
+}
+
+.btn-line::before {
+  /* 上の線の位置translate()で位置を指定 */
+  transform: translateY(-16px);
+}
+.btn-line::after {
+  /* 下の線の位置 */
+  transform: translateY(16px);
+}
+/*ボタン完成 */
+/*toggleClassでopenがついた時にright0を指定する */
+.menu.open {
+  right: 0%;
+}
+
+.btn-line.open {
+  right: 0;
+  background-color: #fff;
+}
+
+.btn-line.open::after {
+  background-color: #fff;
+}
+
+.btn-line.open::before {
+  background-color: #fff;
+}
+
+/*メインコンテンツの装飾*/
+#main{
+  width:85%;
+  margin:0 7.5%;
+ 
+}
+
+.main-image{
+  position:relative;
+  text-align: center;
+  margin-top:0;
+}
+/*画像サイズをwindow幅で自動変更*/
+img{
+  width:100%;
+  /*vertical-align-bottomを入れることによって画像の間の微妙な隙間を消す！*/
+  vertical-align: bottom;
+}
+#index h1{
+  font-size:10vw;
+  line-height:1;
+  color:#ffffff;
+  position: absolute;
+  text-shadow:1px 0 5px black;
+  top:20%;
+  left:5%;
+}
+
+/*コンテンツをinline-blockで横並びに
+スマホでは解除すること*/
+.inlineblock{
+  background-color: #393939;
+  color:#fff;
+}
+inlineblock, .inlineR, .inlineL{
+  display:inline-block;
+  width:49%;
+}
+
+.inlineR, .inlineL{
+  padding: 5px 3px 5px 3px;
+  vertical-align: middle;
+  text-align: center;
+}
+.inlineR img{
+  height:auto;
+  border-radius:400px;
+}
+
+
+/*スクロールfadeinを作成下から上へアニメーション*/
+.popup {
+  opacity: 0;
+  transform:translateY(100px);
+  
+} /*一瞬表示されるのを防ぐ*/
+.fadeInDown {
+  opacity:1;
+  transition: 0.8s;
+  transform:translateY(0px);
+}
+
+/*スクロールslideinLを左から表示*/
+
+.slideinL {
+  opacity: 0;
+  position:relative;
+  transform:translateX(100px);
+}
+  
+.fadeInLeft {
+  opacity:1;
+  transition: 0.8s;
+  transform:translateX(0px);
+}
+
+/*スクロールslideinLを右から表示*/
+
+.slideinR {
+  opacity: 0;
+  transform:translateX(-100px);
+  position:relative;
+}
+  
+.fadeInRight {
+  opacity:1;
+  transition: 0.8s;
+  transform:translateX(0px);
+}
+
+/*見出しを画像の中に挿入,親要素にrelativeが入っているか確認。*/
+
+.h2insert{
+  position: absolute;
+ color:#fff;
+  top:5%;
+  left:3%;
+  padding:3px 4px 3px 4px;
+  background-color: #00B0B0;
+}
+
+
+/*footerメニュー装飾*/
+.footer3column .footer-left, .footer-center, .footer-right{
+  display:inline-block;
+  width: 30%;
+  margin-top:0px;
+}
+.footer3column h3{
+    border-bottom: 3px solid #00B0B0;
+    padding: 10px;
+}
+.footer3column {
+    background-color: #393939;
+    color: #fff;
+    text-align: center;
+}
+.footer3column ul {
+    list-style: none;
+    padding: 0;
+    line-height:40px;
+}
+.footer3column a{
+  text-decoration: none;
+  color:#fff;
+}
+.footer3column a:hover{
+  color:#ff3939;
+}
+
+/*スマホ対応も頑張ってみる 
+min-widthなので600px以上の時のスタイル指定*/
+@media screen and (min-width: 600px) {
+  .btn1 {
+    display: none;
+  }
+
+  .menu {
+    /* メニューを横に */
+    display: flex;
+    flex-direction: row;
+       /* これを入れないとコンテンツと被る*/
+    position:relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 70px;
+  }
+  .menu-list{
+    margin: 0 auto;
+    /*テキストの配置を真ん中に*/
+    justify-content: center;
+  }
+  .menu-list:hover{
+    background-color: #fff;
+    color:#00B0B0;
+  }
+}
+@media screen and (max-width: 600px){
+  .footer3column .footer-left, .footer-center, .footer-right{
+  display:block;
+  width: 100%;
+  margin-top:0px;
+    text-align: center;
+}
+  #main{
+  width:100%;
+    margin:0;
+      
+}
+  inlineblock, .inlineR, .inlineL{
+  display:block;
+    width:100%;
+}
+  .inlineR img{
+    max-width:300px;
+  }
+  
+  
+}
